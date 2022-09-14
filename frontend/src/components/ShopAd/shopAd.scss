@@ -1,0 +1,17 @@
+.shop-ad-wrapper {
+  height: 400px;
+  .img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
+  .shop-ad-title {
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .shop-ad-price{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+ }

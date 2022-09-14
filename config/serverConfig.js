@@ -1,7 +1,0 @@
-const port = 3000;
-
-const ServerConfig = {
-    port : port ,
-    serverRunningMsg: `Server is running on port: ${port}`
-}
-module.exports = ServerConfig;
