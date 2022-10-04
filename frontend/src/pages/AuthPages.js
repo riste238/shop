@@ -6,23 +6,24 @@ import Register from '../components/registerForm/Register';
 
 
 function AuthPages() {
-    const [isFormLogin, setIsFormLogin] = useState(true);
+    // const [isFormLogin, setIsFormLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(true);
 
-    function setLoginForm(){
-        setIsFormLogin(true);
-    }
-    function setRegisterForm(){
-        setIsFormLogin(false);
-    }
+    // function setLoginForm(){
+    //     setIsFormLogin(true);
+    // }
+    // function setRegisterForm(){
+    //     setIsFormLogin(false);
+    // }
 
     return (
-      <div>
-          <button onClick={setLoginForm}>Login</button>
-          <button onClick={setRegisterForm}>Register</button>
-          {(isFormLogin ?  <LoginForm /> : <Register/>)}
-
-
-      </div>
+        <div className="auth-wrapper container-fluid">
+            <div className="row">
+                <div className="col-md-6 p-md-5">
+                    {isLogin ? <LoginForm showLoginForm={setIsLogin} /> : <Register showLoginForm={setIsLogin} />}
+                </div>
+            </div>
+        </div>
     )
 }
 export default AuthPages;

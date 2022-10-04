@@ -11,6 +11,10 @@ class AuthService {
         console.log('body > ', body);
         return axios.post('/api/register', body)
     }
+
+    static completeRegistration(body){
+        return axios.post('/api/complete-registration', body);
+    }
 }
 
 export default AuthService;

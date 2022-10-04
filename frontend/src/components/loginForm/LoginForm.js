@@ -1,70 +1,60 @@
-import React,{useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, {useState} from 'react';
 import AuthService from "../../services/AuthService";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setUser} from "../../redux/userSlice";
 
-
-function LoginForm() {
-
-    const [username, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [isFormValid, setIsFormValid] = useState(true);
+function LoginForm({showLoginForm}) {
+    const [userData, setUserData] = useState({
+        username: "",
+        password: "",
+    });
+    const [isValidForm, setIsValidForm] = useState(true);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+    const onHandleInput = (e) => {
+        let newInput = userData;
+        newInput[e.target.name] = e.target.value;
+        setUserData(newInput);
+    };
+    const loginForm = () => showLoginForm(false)
 
-    const changeName = (e) => { setName(e.target.value) };
-    const changePassword = (e) => { setPassword(e.target.value) };
-    const changeEmail = (e) => { setEmail(e.target.value)};
-
-
-    const onSubmitForm = e => {
-        e.preventDefault();
-        // console.log('form submit -> ', username, password);
-        if (!username || !password || !email) {
-            setIsFormValid(false)
-            return;
+    const onSubmitForm = (e) => {
+        e.preventDefault()
+        if (!userData.username || !userData.password) {
+            setIsValidForm(false)
+            return
         }
-        setIsFormValid(true);
-
-        //    here we'll write API call to backend.
-        let body = { username: username, password: password, email: email};
-        AuthService.login(body)
-            .then(response =>  {
-                if(response && response.status === 200)
-                    console.log('API RESPONSE' , response) 
-                  localStorage.setItem("user", JSON.stringify(response.data));
-                  navigate('/shop');
-                   
-                }
-            )
-            .catch((error) => {
-                console.log(error);
-            })
-
+        setIsValidForm(true);
+        AuthService.login(userData)
+            .then(res => {
+                console.log(res.data);
+                if (res && res.status === 200) {
+                    // var decoded = jwt.verify(JSON.stringify(res.data), 'shhhhh');
+                    // console.log(decoded);
+                    localStorage.setItem('user', JSON.stringify(res.data));
+                    dispatch(setUser(res.data));
+                    navigate('/');
+            } 
+        }).catch(err => {
+            console.log(err);
+        })
     }
-
-
     return (
-        <form onSubmit={event => { onSubmitForm(event) }}>
-            <label htmlFor={username} /> Username:
-            <input type="text" id="name" name="name" onChange={(event) => { changeName(event) }} />
+        <form onSubmit={onSubmitForm} method="post">
+            <h1>Login</h1>
+            <label htmlFor="username">User name</label>
+            <input className="form-control" name="username" type="text" id="username" onInput={onHandleInput}/>
+            <label htmlFor="password">Password</label>
+            <input className="form-control mb-3" name="password" type="password" id="password" onInput={onHandleInput}/>
 
-
-            <br />
-            <label htmlFor={password}>Password: </label>
-            <input type="password" id="password" name="password" onChange={(event) => { changePassword(event) }} />
-
-            <br />
-            <label htmlFor={email}>Email:</label>
-            <input type="email"  id="email" name="email" onChange= {(event)=> {changeEmail(event)}}/>
-
-            <br/>
-
-            {!isFormValid ? <p>All fileds are required!</p> : null}
-            <input type="submit" id="submit" name="submit" value="Login" />
+            <button type="button" className="btn btn-primary px-5 form-control mb-3" onClick={loginForm}>Go to register</button>
+            <button className="btn btn-success px-5 ms-auto form-control">OK</button>
+            {!isValidForm && <p>Username and password is required!</p>}
+         
         </form>
-
-    )
+    );
 }
 
 export default LoginForm;

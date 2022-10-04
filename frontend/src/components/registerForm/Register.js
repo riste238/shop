@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import AuthService from "../../services/AuthService";
 
-
-function Register() {
+function Register({showLoginForm}) {
     const [userData, setUserData] = useState({
         username: "",
         lastName: "",
@@ -19,7 +18,7 @@ function Register() {
     const [isApiFinish, setIsApiFinish] = useState(false);
 
 
-   
+    const loginForm = () => showLoginForm(true)
     const onHandleInput = (e) => {
         let newInput = userData
         newInput[e.target.name] = e.target.value
@@ -34,7 +33,6 @@ function Register() {
             return
         }
         setIsValidForm(true);
-        
 
         AuthService.register(userData).then(res => {
             if (res && res.status === 200) {
@@ -49,6 +47,13 @@ function Register() {
     }
 
     return (
+        <div className="container">
+            <div className="row">
+
+           <div className="col-6">
+
+          
+       
         <form onSubmit={onSubmitForm} method="post">
             <h1>Register</h1>
             <label htmlFor="first-name">First name</label>
@@ -58,16 +63,11 @@ function Register() {
             <input className="form-control" type="text" id="last-name" name="lastName" onInput={onHandleInput}/>
 
             <label htmlFor="address">Address</label>
-            <input className="f`orm-control" type="text" id="address" name="address" onInput={onHandleInput}/>
+            <input className="form-control" type="text" id="address" name="address" onInput={onHandleInput}/>
 
             <label htmlFor="city">City</label>
             <input className="form-control" type="text" id="city" name="city" onInput={onHandleInput}/>
 
-            {/* <label htmlFor="gender">Gender</label>
-            <select className="form-control" ref={genderSelect} id="gender" onInput={onHandleInput}>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select> */}
 
             <label htmlFor="email">Email</label>
             <input className="form-control" type="email" id="email" name="email" onInput={onHandleInput}/>
@@ -78,12 +78,15 @@ function Register() {
             <label htmlFor="password">Password</label>
             <input className="form-control mb-3" type="password" id="password" name="password" onInput={onHandleInput}/>
 
-            {/* <button type="button" className="btn btn-primary px-5" onClick={loginForm}>Go to login</button> */}
-            <button className="btn btn-success">OK</button>
+            <button type="button" className="btn btn-primary px-5" onClick={loginForm}>Go to login</button>
+            <button className="btn btn-success px-5">OK</button>
             {!isValidForm ? <p>All fields is required!</p> : null}
             {isApiFinish ? <p>You are registered!</p> : null}
             {isApiErr ? <p>ERROR: Something wrong with network, please try later!</p> : null}
         </form>
+        </div>
+        </div>
+        </div>
     );
 }
 

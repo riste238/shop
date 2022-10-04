@@ -4,19 +4,19 @@ import ShopAd from '.././components/ShopAd/ShopAd.js';
 
 function Shop() {
 
-const [ads, setAds] = useState([]);
+    const [ads, setAds] = useState([]);
 
-    useEffect(() => 
-    {  shopServices.getAds()
-        .then(response => {
-                if(response.status === 200){
-                    setAds(response.data);
-                    console.log(response);
-                }
+        useEffect(() => 
+        {  shopServices.getAds()
+            .then(response => {
+                    if(response.status === 200){
+                        setAds(response.data);
+                        console.log(response);
+                    }
 
-         })
-        .catch( (err) => console.log(err))
-        },[]);
+            })
+            .catch( (err) => console.log(err))
+            },[]);
 
 
     return (

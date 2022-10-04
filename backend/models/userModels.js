@@ -2,16 +2,20 @@ const mongoose = require('mongoose');
 
 
 const userSchema =  new mongoose.Schema({
-    username: {type: 'string', required:'Boolean'},
-    password: {type: 'string', required:'Boolean'},
-    email: {type: 'string', required:'Boolean'},
-    firstName: {type: 'string'},
-    lastname: {type: 'string'},
-    avatar: {type: 'string'},
-    gender: {type: 'string'},
-    city: {type: 'string'},
+    username: {type: String, required:Boolean},
+    password: {type: String, required:Boolean},
+    email: {type: String, required:Boolean},
+    firstName: {type: String},
+    lastname: {type: String},
+    avatar: {type: String},
+    gender: {type: String},
+    city: {type: String},
     phone: {type: Number},
-    isAdmin: {type: 'string', required:'Boolean', default: false}
+ 
+    isAdmin: {type: String, required:Boolean, default: false},
+  
+    isActivate: {type: String, required:Boolean, default: false}
+
      
 })
 const UserModel = mongoose.model('users',userSchema);
