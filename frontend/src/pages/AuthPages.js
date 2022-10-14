@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import AuthService from "../services/AuthService";
 import './authPages.scss';
 import LoginForm from "../components/loginForm/LoginForm";
 import Register from '../components/registerForm/Register';
