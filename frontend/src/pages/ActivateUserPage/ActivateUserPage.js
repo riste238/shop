@@ -15,12 +15,11 @@ function ActivateUserPage() {
             navigate('/');
         }
         else {
-          
-            console.log(params.id);
+       
             AuthService.completeRegistration({ userId: params.id })
                 .then(response => {
                     if (response) {
-                          console.log(response)      
+                          
                     setIsActivated(true);
                  
                     setTimeout(()=> {
@@ -30,7 +29,7 @@ function ActivateUserPage() {
 
                 })
                 .catch(error => {
-                    console.log(error);
+                   
                     setIsActivated(false);
 
                 })
