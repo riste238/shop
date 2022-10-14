@@ -11,7 +11,6 @@ function Shop() {
             .then(response => {
                     if(response.status === 200){
                         setAds(response.data);
-                        console.log(response);
                     }
 
             })
