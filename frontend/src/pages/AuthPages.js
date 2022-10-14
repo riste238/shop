@@ -7,15 +7,8 @@ import Register from '../components/registerForm/Register';
 
 
 function AuthPages() {
-    // const [isFormLogin, setIsFormLogin] = useState(true);
     const [isLogin, setIsLogin] = useState(true);
 
-    // function setLoginForm(){
-    //     setIsFormLogin(true);
-    // }
-    // function setRegisterForm(){
-    //     setIsFormLogin(false);
-    // }
 
     return (
         <div className="auth-wrapper container">
