@@ -6,6 +6,8 @@ const Users = require('./models/userModels');
 const nodemailer = require('nodemailer');
 const serverConfig = require('./config/serverConfig');
 // const mainService = require('./services/mailService');
+const products = require('./fakeDb/products.json');
+const Product = require("./models/productModel");
 const app = express();
 
 mongoose.connect(dbConfig.MONGO_URL)
@@ -19,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-
+console.log("Ova se dobienite producti od fakeApi",products);
 
 app.post('/api/login', (req, res) => {
     const reqBody = req.body;
@@ -95,9 +97,6 @@ app.post('/api/register', async (req, res) => {
                 <a href="http://localhost:3000/user-activate/${saveNewUser._id.toString()}" target="_blank">Activate link</a> 
                 
                 `, 
-          
-
-
             });
 
             // Preview only available when sending through an Ethereal account
@@ -126,6 +125,27 @@ app.post('/api/complete-registration', (req,res)=> {
         }
     })
 })
+
+// app.get('/shop/products/get-rating/:id', (req, res) => {
+//     const id = req.params.id;
+//     Product.find({ _id: id }, (error, data) => {
+//         if (error) {
+//             console.log(error);
+//             res.send(error)
+//         }
+//         res.send({ allRatings: data[0].allRatings, rating: data[0].rating })
+//     })
+// })
+
+// app.get('/api/top-products/:top', (req, res) => {
+//     let topNumber = req.params.top;
+//     let copyProduct = [...products];
+//     let sorted = copyProduct.sort((a,b) => {
+//         return b.rating.rate - a.rating.rate;
+//     })
+//     res.send(sorted.splice(0,topNumber));
+// }
+// )
 
 app.listen(serverConfig.port, (err) => {
     if (err) {

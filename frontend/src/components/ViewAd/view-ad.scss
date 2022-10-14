@@ -1,7 +1,15 @@
 .view-ad-wrapper {
+   height:500px;
+   display:flex;
+   justify-content: center;
+   align-items: center;
     .add-to-card-btn {
         background-color: gray;
+       
     }
-
+.ad-img{
+    width: 300px;
+    height: 300px;
+}
    
 }

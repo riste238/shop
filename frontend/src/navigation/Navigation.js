@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -26,17 +26,17 @@ function Navigation() {
     return (
 
         <Navbar bg="light" expand="lg">
+           
             <Container>
                 <Navbar.Brand href="#home">E-Shop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/authPage">{userBtnLayout()}</Nav.Link>
+                      <Nav.Link href="/">Home</Nav.Link> 
+                       <Nav.Link href="/authPage">{userBtnLayout()}</Nav.Link>
                         <Nav.Link href="/shop">Shop</Nav.Link>
                         {/* <Nav.Link><FaCartArrowDown/></Nav.Link> */}
                        <ShopCart />
-                        <Nav.Link href="/about">About us</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

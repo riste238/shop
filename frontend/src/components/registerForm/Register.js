@@ -47,10 +47,7 @@ function Register({showLoginForm}) {
     }
 
     return (
-        <div className="container">
-            <div className="row">
-
-           <div className="col-6">
+    
 
           
        
@@ -84,9 +81,7 @@ function Register({showLoginForm}) {
             {isApiFinish ? <p>You are registered!</p> : null}
             {isApiErr ? <p>ERROR: Something wrong with network, please try later!</p> : null}
         </form>
-        </div>
-        </div>
-        </div>
+     
     );
 }
 

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import AuthPages from './pages/AuthPages.js';
 import axios from 'axios';
-import AboutUs from './pages/AboutUs.js';
 import Contact from './pages/Contact.js';
 import Shop from './pages/Shop.js';
 import Home from './pages/Home.js';
@@ -47,7 +46,6 @@ function App() {
         <Route path="/authPage" element={<AuthPages/>}/>
         <Route path="/shop" element={<Shop/>}/>
         <Route path="/shop/ad/:adId" element={<AdPage/>}/>
-        <Route path="/about" element={<AboutUs/>}/>
         <Route path="/user-activate/:id" element={<ActivateUserPage/>}/>
      
       </Routes>

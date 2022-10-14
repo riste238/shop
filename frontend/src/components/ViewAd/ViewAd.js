@@ -59,7 +59,7 @@ export default function ViewAd() {
     const adLayout = () => {
         return <div className="ad-wrapper row">
             <div className="col-md-6">
-                <img src={ad.image} alt="Product image" />
+                <img src={ad.image} alt="Product image" className="ad-img"/>
             </div>
             <div className="col-md-6">
                 <h3>{ad.title}</h3>

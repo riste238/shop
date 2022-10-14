@@ -42,6 +42,7 @@ function LoginForm({showLoginForm}) {
         })
     }
     return (
+        
         <form onSubmit={onSubmitForm} method="post">
             <h1>Login</h1>
             <label htmlFor="username">User name</label>

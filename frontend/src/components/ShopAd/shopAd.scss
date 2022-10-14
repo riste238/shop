@@ -1,5 +1,5 @@
 .shop-ad-wrapper {
-  height: 400px;
+  // height: 500px;
   .img {
     width: 200px;
     height: 200px;
@@ -14,4 +14,12 @@
     font-size: 20px;
     font-weight: bold;
   }
+  .cart {
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+    padding: 20px;
+    height:500px;
+    margin: 10px; 
+  }
+  
  }
