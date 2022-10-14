@@ -11,7 +11,6 @@ function ShopCart() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-            console.log("Cart from useEffect" ,cart);
         if (!shopCartWrapperRef.current) {
             return;
         }
@@ -23,7 +22,7 @@ function ShopCart() {
         else {
             shopCartWrapperRef.current.classList.remove('show-badge');
         }
-        console.log(shopCartWrapperRef.current);
+  
     }, [cart]);
 
     const removeItemFromCart = (index) =>{
@@ -31,7 +30,7 @@ function ShopCart() {
     }
 
     const handleShopCartCount = (index,isIncrement) => {
-        console.log(index,isIncrement);
+   
         // {index, isIncrement};
             dispatch(handleCount({index,isIncrement}))
     }
@@ -39,8 +38,7 @@ function ShopCart() {
 
     const shopCartSumLayout = () => {
         return cart.map((item, index) => {
-            console.log(item.image);
-            // console.log("Pokazi mi go title od kliknatiot item " + item.title);
+           
             return  <div key={index} className="shop-cart-item row mt-3" >
                 
                       <div className="col-md-3 cart-img">
