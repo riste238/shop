@@ -29,10 +29,9 @@ function LoginForm({showLoginForm}) {
         setIsValidForm(true);
         AuthService.login(userData)
             .then(res => {
-                console.log(res.data);
+               
                 if (res && res.status === 200) {
-                    // var decoded = jwt.verify(JSON.stringify(res.data), 'shhhhh');
-                    // console.log(decoded);
+                   
                     localStorage.setItem('user', JSON.stringify(res.data));
                     dispatch(setUser(res.data));
                     navigate('/');
