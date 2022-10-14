@@ -10,7 +10,7 @@ import ShopCart from '../components/ShopCart/ShopCart';
 function Navigation() {
 
     const user = useSelector((state) => state.userStore.user);
-    console.log('ova e podatokot od useSelector user ', user);
+   
 
     useEffect(() => {
         console.log("user > ", user);
