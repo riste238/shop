@@ -75,7 +75,7 @@ export default function ViewAd() {
     const getAd = () => {
         shopServices.getAdById(params.adId)
             .then(response => {
-                console.log('Owner product with unique params', response);
+             
                 if (response.status === 200) {
                     setAd(response.data) 
                 }
