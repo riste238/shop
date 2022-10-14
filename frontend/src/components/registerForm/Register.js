@@ -36,12 +36,12 @@ function Register({showLoginForm}) {
 
         AuthService.register(userData).then(res => {
             if (res && res.status === 200) {
-                console.log(res)
+            
                 setIsApiErr(false)
                 setIsApiFinish(true)
             }
         }).catch(err => {
-            console.log(err);
+        
             setIsApiErr(true)
         })
     }
