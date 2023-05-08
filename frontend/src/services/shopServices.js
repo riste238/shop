@@ -15,4 +15,7 @@ class shopServices {
     }
 }
 
+// let s = new shopServices();
+// s.getAds();
+
 export default shopServices;

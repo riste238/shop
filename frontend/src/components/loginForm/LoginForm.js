@@ -35,7 +35,7 @@ function LoginForm({showLoginForm}) {
                     // console.log(decoded);
                     localStorage.setItem('user', JSON.stringify(res.data));
                     dispatch(setUser(res.data));
-                    navigate('/');
+                     navigate('/');
             } 
         }).catch(err => {
             console.log(err);

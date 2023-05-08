@@ -15,7 +15,7 @@ const cartSlice = createSlice({
                 if (item.id === newItem.id) {
                     foundItemIndex = index;
                     return item;
-                }
+                }   
             })
 
             if (foundItem) {
@@ -31,6 +31,8 @@ const cartSlice = createSlice({
             state.cart.splice(action.payload, 1);
         },
         handleCount: (state, action) => {
+            // dodava novo property count;
+            //it's ordinary way to add new propery. So here count is key, and value is that's on the right side across equal operator
             state.cart[action.payload.index].count = action.payload.isIncrement ? state.cart[action.payload.index].count + 1 : state.cart[action.payload.index].count - 1;
     }
     }

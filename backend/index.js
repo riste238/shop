@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const serverConfig = require('./config/serverConfig');
 // const mainService = require('./services/mailService');
 const products = require('./fakeDb/products.json');
-const Product = require("./models/productModel");
+const Product = require("./models/productModels");
 const app = express();
 
 mongoose.connect(dbConfig.MONGO_URL)
@@ -47,7 +47,7 @@ app.post('/api/register', async (req, res) => {
     const reqbody = req.body;
     Users.findOne(reqbody, async (err, data) => {
         if (err) {
-            const errorMsg = `Error on reqister user: ${err}`;
+             const errorMsg = `Error on reqister user: ${err}`;
             console.log(err);
             res.send(errorMsg);
             return;
